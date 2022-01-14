@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Marker, Popup } from "react-leaflet";
+import * as L from "leaflet";
 
 function MarkerLeaflet ( { pos } ) {
     const [ lat, setLat ] = useState( null );
@@ -13,13 +14,20 @@ function MarkerLeaflet ( { pos } ) {
         },
     }
 
-    return (
-        <Marker position={ pos } eventHandlers={ clickHandler } style={ { fillColor: "#000" } } >
+    const LeafIcon = L.DivIcon.extend( {
+        options: {},
+    } );
 
+    const geoIcon = new LeafIcon( {
+        html: '<i class="fas fa-map-marker-alt" ></i>'
+    } );
+
+    return (
+        <Marker position={ pos } eventHandlers={ clickHandler } icon={ geoIcon }  >
             <Popup>
                 lat={ lat }, lng={ lng }
             </Popup>
-        </Marker>
+        </Marker >
     )
 }
 

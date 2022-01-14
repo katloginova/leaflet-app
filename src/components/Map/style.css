@@ -1,0 +1,16 @@
+.leaflet-marker-icon {
+    background: none;
+    border: none;
+}
+
+.fa-map-marker-alt {
+    font-size: 25px;
+    color: rgb(48, 48, 231);
+}
+
+.fa-map-marker-alt:hover {
+    font-size: 25px;
+    color: rgb(231, 136, 48);
+    transform: scale(1.1);
+    transition: 80ms all;
+}

@@ -1,17 +1,20 @@
 import { useEffect } from 'react';
 import { MapContainer, TileLayer } from 'react-leaflet';
 import MarkerLeaflet from './MarkerLeaflet';
+import * as L from "leaflet";
+// import image1 from ;
+import './style.css';
 
 const array = [
     {
         id: "5b3b3fda82a750002cb3717c",
-        lat: 50.42325834030328,
-        lng: 30.51901083448521
+        lat: 48.434151349216265,
+        lng: 35.013602692108535
     },
     {
         id: "5074a295e4b03cb6bc069c8c",
-        lat: 50.41999696052698,
-        lng: 30.520497078329914
+        lat: 48.434151349216265,
+        lng: 35.003602692108535
     }
 ];
 
@@ -21,30 +24,32 @@ const arrPosition = array.map( ( item ) => {
 
 
 function Map () {
-    const position = [ 50.42, 30.52 ];
-    // useEffect( () => {
-    //     fetch( 'https://api.foursquare.com/v2/venues/search?ll= 50.42,30.52&limit=2&client_id=NSQCUALHQL1RMUFNGZUFGMGZLY4TERL3SEGOIEV1UZD5UU3W&client_secret=LLR43ZZ0R1ESCSCU1GUAF45VLB2HV5JMZPHDCODK25RR4CBO&v=20210323' )
-    //         .then( res => res.json() )
-    //         .then( data => console.log( data.response.venues.map( ( item ) => {
-    //             return {
-    //                 id: item.id,
-    //                 lat: item.location.lat,
-    //                 lng: item.location.lng,
-    //             }
-    //         } ) ) )
-    // }, [] )
+    const position = [ 48.434151349216265, 35.013602692108535 ];
+
+    useEffect( () => {
+
+        // fetch( "https://api-adresse.data.gouv.fr/search/?q=kiev&type=street" )
+        //     .then( res => res.json() )
+        //     .then( data => console.log( data.response.venues.map( ( item ) => {
+        //         return {
+        //             id: item.id,
+        //             lat: item.location.lat,
+        //             lng: item.location.lng,
+        //         }
+        //     } ) ) )
+        // .then( data => console.log( data ) )
+    }, [] )
 
     console.log( arrPosition );
 
     return (
-        <MapContainer center={ arrPosition[ 0 ] } zoom={ 13 } >
+        <MapContainer center={ position } zoom={ 20 } style={ { width: '100%', height: '100hv' } }>
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
 
             { arrPosition?.map( ( item, key ) => <MarkerLeaflet key={ key } pos={ item } /> ) }
-
         </MapContainer>
     );
 }

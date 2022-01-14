@@ -1,0 +1,8 @@
+.leflet-app {
+    display: flex;
+    justify-content: space-between;
+}
+
+.leaflet-container {
+    width: 100%;
+}
